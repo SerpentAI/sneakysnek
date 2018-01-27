@@ -15,4 +15,4 @@ class KeyboardEvent:
         self.timestamp = time.time()
 
     def __str__(self):
-        return f"KeyboardEvent.{self.event} - {self.keyboard_key.name} - {self.timestamp}"
+        return f"KeyboardEvent.{self.event.name} - {self.keyboard_key.name} - {self.timestamp}"
