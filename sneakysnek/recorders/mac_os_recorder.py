@@ -92,8 +92,9 @@ class MacOSRecorder(Recorder):
 
             self.callback(KeyboardEvent(keyboard_event, keyboard_key))
         elif event_type in (mouse_click_down_events + mouse_click_up_events):
-            # TODO: Missing x, y ?! How?
             direction = "DOWN" if event_type in mouse_click_down_events else "UP"
+
+            x, y = [int(i) for i in Quartz.CGEventGetLocation(event)]
 
             if event_type in mouse_button_mapping:
                 button = mouse_button_mapping[event_type]
@@ -105,7 +106,7 @@ class MacOSRecorder(Recorder):
                 else:
                     return event
 
-            self.callback(MouseEvent(MouseEvents.CLICK, button=button, direction=direction))
+            self.callback(MouseEvent(MouseEvents.CLICK, button=button, direction=direction, x=x, y=y))
         elif event_type == Quartz.kCGEventScrollWheel:
             x, y = [int(i) for i in Quartz.CGEventGetLocation(event)]
 
