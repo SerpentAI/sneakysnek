@@ -92,6 +92,7 @@ class MacOSRecorder(Recorder):
 
             self.callback(KeyboardEvent(keyboard_event, keyboard_key))
         elif event_type in (mouse_click_down_events + mouse_click_up_events):
+            # TODO: Missing x, y ?! How?
             direction = "DOWN" if event_type in mouse_click_down_events else "UP"
 
             if event_type in mouse_button_mapping:

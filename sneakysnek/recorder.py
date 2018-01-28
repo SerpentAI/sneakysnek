@@ -8,23 +8,24 @@ class RecorderError(BaseException):
 class Recorder:
 
     def __init__(self, callback):
-        self.backend = self._initialize_backend()
+        self.backend = None
 
-        self.callback = callback
-        self.is_recording = False
+        self._initialize_backend(callback)
 
-    def start(self, callback):
-        pass
-
-    def _initialize_backend(self):
+    def _initialize_backend(self, callback):
         if sys.platform in ["linux", "linux2"]:
             import sneakysnek.recorders.linux_recorder
-            self.backend = sneakysnek.recorders.linux_recorder.LinuxRecorder()
+            self.backend = sneakysnek.recorders.linux_recorder.LinuxRecorder(callback)
         elif sys.platform == "darwin":
             import sneakysnek.recorders.mac_os_recorder
-            self.backend = sneakysnek.recorders.mac_os_recorder.MacOSRecorder()
+            self.backend = sneakysnek.recorders.mac_os_recorder.MacOSRecorder(callback)
         elif sys.platform == "win32":
             import sneakysnek.recorders.windows_recorder
-            self.backend = sneakysnek.recorders.windows_recorder.WindowsRecorder()
+            self.backend = sneakysnek.recorders.windows_recorder.WindowsRecorder(callback)
         else:
             raise RecorderError(f"Unsupported platform '{sys.platform}'")
+
+    @classmethod
+    def record(cls, callback):
+        recorder = cls(callback)
+        recorder.backend.__class__.record(callback)
