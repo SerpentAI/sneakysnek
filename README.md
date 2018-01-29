@@ -44,7 +44,7 @@ Represents an event captured from the keyboard.
 **Attributes**
 
 * _event_: One of `KeyboardEvents.DOWN`, `KeyboardEvents.UP`
-* _keyboard\_key_: One entry from the [KeyboardKey enumeration](https://github.com/SerpentAI/sneakysnek/blob/master/sneakysnek/keyboard_keys.py)
+* *keyboard_key*: One entry from the [KeyboardKey enumeration](https://github.com/SerpentAI/sneakysnek/blob/master/sneakysnek/keyboard_keys.py)
 * _timestamp_: A `time.time()` timestamp
 
 ### MouseEvent
