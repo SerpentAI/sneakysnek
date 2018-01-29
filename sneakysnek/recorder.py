@@ -29,3 +29,24 @@ class Recorder:
     def record(cls, callback):
         recorder = cls(callback)
         recorder.backend.__class__.record(callback)
+
+
+# SNEAKYSNEK DEMO/TEST
+if __name__ == "__main__":
+    import sneakysnek.keyboard_event
+    import sneakysnek.keyboard_keys
+
+    print("Now recording keyboard / mouse input globally. Press ESC to exit.")
+    print("")
+
+    def handler(event):
+        print(event)
+
+        if isinstance(event, sneakysnek.keyboard_event.KeyboardEvent):
+            if event.keyboard_key == sneakysnek.keyboard_keys.KeyboardKey.KEY_ESCAPE:
+                exit()
+
+    recorder = Recorder.record(handler)
+
+    while True:
+        pass

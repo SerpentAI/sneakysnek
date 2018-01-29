@@ -2,7 +2,7 @@ import enum
 
 
 class KeyboardKey(enum.Enum):
-    """Supporting the 104 de facto standard PC keyboard keys"""
+    """Supporting the ANSI layout"""
 
     KEY_ESCAPE = "KEY_ESCAPE"
     KEY_F1 = "KEY_F1"
