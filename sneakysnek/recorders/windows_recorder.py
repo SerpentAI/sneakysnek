@@ -42,8 +42,6 @@ class WindowsRecorder(Recorder):
         if self.mouse_hook is not None:
             UnhookWindowsHookEx(self.mouse_hook)
 
-        self.thread.join()
-
         self.is_recording = False
 
     def event_handler(self, event):

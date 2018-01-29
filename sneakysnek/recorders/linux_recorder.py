@@ -74,8 +74,6 @@ class LinuxRecorder(Recorder):
         self.display_record_mouse.close()
         self.display_local.close()
 
-        self.thread.join()
-
         self.is_recording = False
 
     def event_handler(self, display, reply):

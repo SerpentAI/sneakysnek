@@ -55,7 +55,6 @@ class MacOSRecorder(Recorder):
 
     def stop(self):
         self.is_recording = False
-        self.thread.join()
 
     def event_handler(self, proxy, event_type, event, *args):
         if event_type in [Quartz.kCGEventKeyDown, Quartz.kCGEventKeyUp]:
