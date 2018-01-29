@@ -35,6 +35,8 @@ class LinuxRecorder(Recorder):
         self.mouse_event_thread = None 
 
     def start(self):
+        self.is_recording = True
+
         self.keyboard_context = self._initialize_keyboard_context()
         self.mouse_context = self._initialize_mouse_context()
 
@@ -63,8 +65,6 @@ class LinuxRecorder(Recorder):
         self.display_record_mouse.record_free_context(self.mouse_context)
         
     def stop(self):
-        self.is_recording = False
-
         self.display_local.record_disable_context(self.keyboard_context)
         self.display_local.record_disable_context(self.mouse_context)
 
@@ -75,6 +75,8 @@ class LinuxRecorder(Recorder):
         self.display_local.close()
 
         self.thread.join()
+
+        self.is_recording = False
 
     def event_handler(self, display, reply):
         data = reply.data

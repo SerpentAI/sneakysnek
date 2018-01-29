@@ -34,8 +34,6 @@ class WindowsRecorder(Recorder):
         self.listen()
 
     def stop(self):
-        self.is_recording = False
-
         PostThreadMessage(self.thread_id, 0x0401, 0, 0)
 
         if self.keyboard_hook is not None:
@@ -45,6 +43,8 @@ class WindowsRecorder(Recorder):
             UnhookWindowsHookEx(self.mouse_hook)
 
         self.thread.join()
+
+        self.is_recording = False
 
     def event_handler(self, event):
         self.callback(event)
