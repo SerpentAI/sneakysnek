@@ -31,8 +31,7 @@ class Recorder:
         recorder.backend.__class__.record(callback)
 
 
-# SNEAKYSNEK DEMO/TEST
-if __name__ == "__main__":
+def demo():
     import sneakysnek.keyboard_event
     import sneakysnek.keyboard_keys
 
@@ -46,7 +45,11 @@ if __name__ == "__main__":
             if event.keyboard_key == sneakysnek.keyboard_keys.KeyboardKey.KEY_ESCAPE:
                 exit()
 
-    recorder = Recorder.record(handler)
+    Recorder.record(handler)
 
     while True:
         pass
+
+
+if __name__ == "__main__":
+    demo()
