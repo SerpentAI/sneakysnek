@@ -129,4 +129,5 @@ class KeyboardKey(enum.Enum):
     KEY_NUMPAD_PERIOD = KEY_NUMPAD_DECIMAL
 
     # macOS
+    KEY_COMMAND = "KEY_COMMAND"
     KEY_FN = "KEY_FN"

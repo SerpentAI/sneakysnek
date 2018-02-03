@@ -20,7 +20,7 @@ extras_require = {
 
 setup(
     name='sneakysnek',
-    version="0.1.0",
+    version="0.1.1",
     description="Dead simple cross-platform keyboard & mouse global input capture solution for Python 3.6+",
     long_description=long_description,
     author="Nicholas Brochu",
